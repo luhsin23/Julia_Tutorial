@@ -1,0 +1,1181 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "1+1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "This is so cool!!!\n"
+     ]
+    }
+   ],
+   "source": [
+    "println(\"This is so cool!!!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Part 1: Julia Basics"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### for loop"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "This\n",
+      "is\n",
+      "so\n",
+      "cool\n"
+     ]
+    }
+   ],
+   "source": [
+    "l = [\"This\", \"is\", \"so\", \"cool\"] \n",
+    "for i in l\n",
+    "    println(i) \n",
+    "end"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n",
+      "5\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in 1:5\n",
+    "    println(i)\n",
+    "end"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### while loop"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n",
+      "5\n"
+     ]
+    }
+   ],
+   "source": [
+    "m = 1\n",
+    "while m<= 5\n",
+    "    println(m)\n",
+    "    m = m + 1\n",
+    "end"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### if-else statement"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "A is greater than B\n"
+     ]
+    }
+   ],
+   "source": [
+    "A = 100\n",
+    "B = 50\n",
+    "if A > B\n",
+    "    println(\"A is greater than B\")\n",
+    "elseif A < B\n",
+    "    println(\"A is less than B\")\n",
+    "else\n",
+    "    println(\"A is equal to B\")\n",
+    "end"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### create function"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newfunction1(a, b, c) = a + b + c\n",
+    "newfunction1(1, 1, 1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "function newfunction2(x,y)\n",
+    "           x + y\n",
+    "end\n",
+    "newfunction2(1, 1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2-element Vector{Int64}:\n",
+       " 2\n",
+       " 0"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#if you want to get more from the function: may use return\n",
+    "function newfunction3(x,y)\n",
+    "    return([x + y, x-y])\n",
+    "end\n",
+    "newfunction3(1, 1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### install package"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "using Pkg\n",
+    "\n",
+    "Pkg.add(\"LinearAlgebra\")  # we need the norm funciton\n",
+    "using LinearAlgebra\n",
+    "\n",
+    "Pkg.add(\"Statistics\") # we need the mean function\n",
+    "using Statistics"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Part 2: Julia Tutorial"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chapter 1.1 vector"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Create vector"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# can separate using \",\"\n",
+    "x = [ -1.1, 0.0, 3.6, -7.2 ]\n",
+    "length(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# can also separate using \";\"\n",
+    "y = [ -1.1; 0.0; 3.6; -7.2 ]\n",
+    "length(y)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2]Matrix{Int64}\n",
+      "(1, 2)Tuple{Int64, Int64}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Wrong ways to create vector\n",
+    "a = [ 1 2 ]\n",
+    "b = ( 1, 2 )\n",
+    "println(a, typeof(a))\n",
+    "println(b, typeof(b))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Indexing"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.6"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = [ -1.1, 0.0, 3.6, -7.2 ]\n",
+    "x[3]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4-element Vector{Float64}:\n",
+       " -1.1\n",
+       "  0.0\n",
+       "  4.0\n",
+       " -7.2"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x[3] = 4.0\n",
+    "x"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Assignment"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "y = [-1.1, 0.0, 4.0, -7.2]\n",
+      "x = [2.0, 0.0, 4.0, -7.2]\n",
+      "y = [2.0, 0.0, 4.0, -7.2]\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "true"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = [ -1.1, 0.0, 3.6, -7.2 ]\n",
+    "y = x\n",
+    "x[3] = 4.0\n",
+    "println(\"y = \", y) # y will change upon the change of x\n",
+    "y[1] = 2.0\n",
+    "println(\"x = \", x)  # x will also be changed when y is changed\n",
+    "println(\"y = \", y)\n",
+    "x == y"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Copy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "y = [-1.1, 0.0, 3.6, -7.2]\n",
+      "x = [-1.1, 0.0, 4.0, -7.2]\n"
+     ]
+    }
+   ],
+   "source": [
+    "x = [ -1.1, 0.0, 3.6, -7.2 ]\n",
+    "y = copy(x)  # only copy the values, then x and y will function separately\n",
+    "x[3] = 4.0\n",
+    "println(\"y = \", y)\n",
+    "y[1] = 2.0\n",
+    "println(\"x = \", x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Vector equality"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "y == x: false\n",
+      "z == x: true\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "true"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = [ -1.1, 0.0, 3.6, -7.2 ]\n",
+    "y = copy(x)\n",
+    "y[3] = 4.0\n",
+    "println(\"y == x: \", y == x)\n",
+    "\n",
+    "z = x\n",
+    "z[3] = 4.0\n",
+    "println(\"z == x: \", z == x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Scalars versus 1-vectors"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Vector{Float64}\n",
+      "Float64\n",
+      "x == y: false\n",
+      "x[1] == y: true\n"
+     ]
+    }
+   ],
+   "source": [
+    "x = [ 1.3 ]\n",
+    "y = 1.3\n",
+    "println(typeof(x))\n",
+    "println(typeof(y))\n",
+    "println(\"x == y: \", x == y)\n",
+    "println(\"x[1] == y: \", x[1] == y)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "###  Stacked vectors"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "z1 == z2: true\n"
+     ]
+    }
+   ],
+   "source": [
+    "x=[1, -2]; y=[1, 1, 0];\n",
+    "z1 = [ x; y ]   # Concatenate using semicolon\n",
+    "z2 = vcat(x, y) # Concatenate using vcat\n",
+    "println(\"z1 == z2: \", z1 == z2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Subvectors and slicing"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "y = [4, 3, 0]\n",
+      "x = [9, 4, 3, -2, -3]\n"
+     ]
+    }
+   ],
+   "source": [
+    "x = [ 9, 4, 3, 0, 5 ]\n",
+    "y = x[2:4]\n",
+    "println(\"y = \" , y)\n",
+    "x[4:5] = [ -2, -3 ]\n",
+    "println(\"x = \" , x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Lists of vectors"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1.0, 0.0], [1.0, -1.0], [0.0, 1.0]] Vector{Vector{Float64}}\n",
+      "([1.0, 0.0], [1.0, -1.0], [0.0, 1.0]) Tuple{Vector{Float64}, Vector{Float64}, Vector{Float64}}\n"
+     ]
+    }
+   ],
+   "source": [
+    "x = [1.0, 0 ];   y = [ 1.0, -1.0 ];   z = [ 0, 1.0];\n",
+    "list1 = [ x, y, z ]\n",
+    "list2 = ( x, y, z )\n",
+    "list1 == list2\n",
+    "println(list1, \" \",  typeof(list1))\n",
+    "println(list2, \" \",  typeof(list2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Zero and one vectors"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0.0, 0.0, 0.0]\n",
+      "[1.0, 1.0]\n"
+     ]
+    }
+   ],
+   "source": [
+    "zeros(3) # create vector of 3 dimension, all of them are 0\n",
+    "ones(2)  # create vector of 2 dimension, all of them are 1\n",
+    "println(zeros(3))\n",
+    "println(ones(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Random vectors"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0.7612257752451703, 0.4792644789787168]\n",
+      "[-1.0075276959321537, -0.6432419892560122]\n"
+     ]
+    }
+   ],
+   "source": [
+    "rand(2)     # drawn from 0-1 randomly\n",
+    "randn(2)    # drawn from standard normal distribution\n",
+    "println(rand(2))\n",
+    "println(randn(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chapter 1.2 Vector addition"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 9, 3]\n",
+      "[0, 8]\n"
+     ]
+    }
+   ],
+   "source": [
+    "a = [0,7,3] +[1,2,0]     # Vector addition\n",
+    "b = [ 1, 9 ] - [ 1, 1]  # Vector subtraction\n",
+    "println(a)\n",
+    "println(b)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chapter 1.3 Scalar-vector multiplication"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Scalar-vector multiplication and division"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 4, -2]\n",
+      "[0, 4, -2]\n",
+      "[0.0, 20.0, -10.0]\n",
+      "[0.0 1.2000000000000002 -0.6000000000000001]\n"
+     ]
+    }
+   ],
+   "source": [
+    "x = [ 0, 2, -1 ]\n",
+    "println(2 * x )    # Scalar-vector multiplication\n",
+    "println(x * 2)\n",
+    "println(x / 0.1)\n",
+    "println(3 / x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "LoadError",
+     "evalue": "MethodError: no method matching +(::Vector{Int64}, ::Int64)\nFor element-wise addition, use broadcasting with dot syntax: array .+ scalar\n\u001b[0mClosest candidates are:\n\u001b[0m  +(::Any, ::Any, \u001b[91m::Any\u001b[39m, \u001b[91m::Any...\u001b[39m) at operators.jl:560\n\u001b[0m  +(\u001b[91m::T\u001b[39m, ::T) where T<:Union{Int128, Int16, Int32, Int64, Int8, UInt128, UInt16, UInt32, UInt64, UInt8} at int.jl:87\n\u001b[0m  +(\u001b[91m::T\u001b[39m, ::Integer) where T<:AbstractChar at char.jl:223\n\u001b[0m  ...",
+     "output_type": "error",
+     "traceback": [
+      "MethodError: no method matching +(::Vector{Int64}, ::Int64)\nFor element-wise addition, use broadcasting with dot syntax: array .+ scalar\n\u001b[0mClosest candidates are:\n\u001b[0m  +(::Any, ::Any, \u001b[91m::Any\u001b[39m, \u001b[91m::Any...\u001b[39m) at operators.jl:560\n\u001b[0m  +(\u001b[91m::T\u001b[39m, ::T) where T<:Union{Int128, Int16, Int32, Int64, Int8, UInt128, UInt16, UInt32, UInt64, UInt8} at int.jl:87\n\u001b[0m  +(\u001b[91m::T\u001b[39m, ::Integer) where T<:AbstractChar at char.jl:223\n\u001b[0m  ...",
+      "",
+      "Stacktrace:",
+      " [1] top-level scope",
+      "   @ In[54]:1",
+      " [2] eval",
+      "   @ ./boot.jl:360 [inlined]",
+      " [3] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)",
+      "   @ Base ./loading.jl:1094"
+     ]
+    }
+   ],
+   "source": [
+    "println(x + 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Scalar-vector addition"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3-element Vector{Float64}:\n",
+       "  2.5\n",
+       " -2.3000000000000003\n",
+       "  1.7"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "[ 1.1, -3.7, 0.3 ] .- 1.4\n",
+    "[ 1.1, -3.7, 0.3 ] .+ 1.4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Elementwise operations with a scalar"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "false\n",
+      "Bool[1, 1, 0]\n"
+     ]
+    }
+   ],
+   "source": [
+    "w = [1,2,2]; z = [1,2,3]\n",
+    "println(w == z)  # check the entire variable\n",
+    "println(w .== z) # check each component"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chapter 1.4 Innder product"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "-7"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = [ -1, 2, 2 ];\n",
+    "y = [ 1, 0, -3 ];\n",
+    "x'*y"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chapter 1.5 Complexity of vector computations"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  0.080585 seconds (58.04 k allocations: 3.744 MiB, 81.68% compilation time)\n",
+      "  0.000084 seconds (2 allocations: 32 bytes)\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "-65.30542253333772"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a = randn(10^5); b = randn(10^5)\n",
+    "@time a'*b\n",
+    "@time a'*b"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chaper 2.1 Linear functions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "-5"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "f(x) = x[1] + x[2] - x[4]^2\n",
+    "f([-1,0,1,2])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "true"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a = [-2, 0, 1, -3]\n",
+    "f(x) = a'*x\n",
+    "x=[2,2,-1,1]; y=[0,1,-1,0];\n",
+    "alpha = 1.5; beta = -3.7;\n",
+    "lhs = f(alpha * x + beta * y) # scalar-vector multiplication\n",
+    "rhs = alpha * f(x) + beta * f(y)\n",
+    "lhs == rhs # which is the definition of linear"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chapter 3.1 Norm"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.0"
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "using Pkg\n",
+    "Pkg.add(\"LinearAlgebra\")  # we need the norm funciton\n",
+    "using LinearAlgebra\n",
+    "x = [ 2, -1, 2 ];\n",
+    "norm(x)    # norm: will calculate the two norm\n",
+    "sqrt(x'*x) # inner product with itself\n",
+    "sqrt(sum(x.^2))  # component-wise x squared"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chapter 3.2 Distance"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(8.36779540858881, 0.3872983346207417, 8.532877591996735)"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "u = [1.8, 2.0, -3.7, 4.7]\n",
+    "v = [0.6, 2.1, 1.9, -1.4]\n",
+    "w = [2.0, 1.9, -4.0, 4.6]\n",
+    "norm(u-v), norm(u-w), norm(v-w)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chapter 4.1 Clustering"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Pkg.add(\"Statistics\") # we need the mean function\n",
+    "using Statistics"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2.0"
+      ]
+     },
+     "execution_count": 40,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "Jclust(x,reps,assignment) =\n",
+    "       mean( [norm(x[i]-reps[assignment[i]])^2 for i=1:length(x)] )\n",
+    "x = [ [0,1], [1,0], [-1,1] ]\n",
+    "reps = [ [1,1], [0,0] ]\n",
+    "assignment = [1,2,1]    \n",
+    "Jclust(x,reps,assignment) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Chapter 5.1 Gram Schmidt Algorithm"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "gram_schmidt (generic function with 1 method)"
+      ]
+     },
+     "execution_count": 41,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "function gram_schmidt(a; tol = 1e-10)\n",
+    "q=[]\n",
+    "for i = 1:length(a)\n",
+    "    qtilde = a[i]\n",
+    "    for j = 1:i-1\n",
+    "        qtilde -= (q[j]'*a[i]) * q[j]\n",
+    "    end\n",
+    "    if norm(qtilde) < tol\n",
+    "       println(\"Vectors are lin0early dependent.\")\n",
+    "       return q\n",
+    "end\n",
+    "    push!(q, qtilde/ norm(qtilde))\n",
+    "end;\n",
+    "return q end"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3-element Vector{Any}:\n",
+       " [-0.5, 0.5, -0.5, 0.5]\n",
+       " [0.5, 0.5, 0.5, 0.5]\n",
+       " [-0.5, -0.5, 0.5, 0.5]"
+      ]
+     },
+     "execution_count": 42,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a = [ [-1, 1, -1, 1], [-1, 3, -1, 3], [1, 3, 5, 7] ]\n",
+    "q = gram_schmidt(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Vectors are linearly dependent.\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "2-element Vector{Any}:\n",
+       " [-0.5, 0.5, -0.5, 0.5]\n",
+       " [0.5, 0.5, 0.5, 0.5]"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b = [ a[1], a[2], 1.3*a[1] + 0.5*a[2] ]\n",
+    "q = gram_schmidt(b)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Julia 1.6.1",
+   "language": "julia",
+   "name": "julia-1.6"
+  },
+  "language_info": {
+   "file_extension": ".jl",
+   "mimetype": "application/julia",
+   "name": "julia",
+   "version": "1.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
